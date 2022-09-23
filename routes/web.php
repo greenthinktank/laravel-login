@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+// 追加
+use App\Http\Controllers\Auth\AuthController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [AuthController::class, 'showLogin'])->name('showLogin');
+
+/**
+ *ログインの処理
+ */
+Route::get('login', [AuthController::class, 'login'])->name('login');
